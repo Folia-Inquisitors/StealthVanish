@@ -1,0 +1,27 @@
+# Build output and local smoke artifacts
+target/
+
+# Local research/reference extractions used while designing the plugin
+elections-zip/
+fakeplayer-zip/
+folia-src/
+folia-zip/
+paper-src/
+
+# Local archives and packaged artifacts
+*.zip
+*.jar
+
+# Local server/runtime data
+plugins/
+*.log
+
+# Local environment and secrets
+.env
+.env.*
+*.secret
+*.secrets
+secrets.yml
+secret.yml
+
+README.md

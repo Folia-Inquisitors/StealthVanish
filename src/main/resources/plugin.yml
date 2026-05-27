@@ -1,0 +1,31 @@
+# Folia will not load plugins unless they explicitly opt in.
+# This flag is a promise that all player/entity access is scheduler-safe.
+folia-supported: true
+
+name: StealthVanish
+version: '0.1.0-SNAPSHOT'
+main: com.example.stealthvanish.StealthVanishPlugin
+api-version: '1.21'
+authors:
+  - yomamaeatstoes
+description: Folia-first vanish plugin built on stable Paper/Bukkit APIs.
+
+commands:
+  stealth:
+    description: Toggle vanish mode.
+    usage: /stealth [on|off|toggle|status|capabilities] [player]
+    permission: stealthvanish.command
+    aliases:
+      - vanish
+      - v
+
+permissions:
+  stealthvanish.command:
+    description: Allows using /stealth for yourself.
+    default: op
+  stealthvanish.command.others:
+    description: Allows toggling vanish for another online player.
+    default: op
+  stealthvanish.see:
+    description: Allows seeing vanished players and real join/quit state.
+    default: op
