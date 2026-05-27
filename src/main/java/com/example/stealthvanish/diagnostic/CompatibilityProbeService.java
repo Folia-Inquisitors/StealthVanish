@@ -182,7 +182,11 @@ public final class CompatibilityProbeService {
             return 10;
         }
 
-        lines.add("probe: Respect command guard=OK patterns=" + patterns.size());
+        boolean scanAllCommands = this.plugin.getConfig().getBoolean("respect.command-guard.scan-all-commands.enabled", true);
+        List<String> ignoredRoots = this.plugin.getConfig().getStringList("respect.command-guard.scan-all-commands.ignored-command-roots");
+        lines.add("probe: Respect command guard=OK patterns=" + patterns.size()
+                + " scanAllCommands=" + scanAllCommands
+                + " ignoredRoots=" + ignoredRoots.size());
         return 0;
     }
 }

@@ -22,6 +22,8 @@ public final class PlayerCommandRespectGuard implements Listener {
     private final boolean enabled;
     private final String blockedMessage;
     private final List<CommandPatternRule> rules;
+    private final boolean scanAllCommands;
+    private final HiddenNameCommandScanner hiddenNameScanner;
 
     public PlayerCommandRespectGuard(JavaPlugin plugin, VanishService vanishService, DiagnosticRecorder diagnostics) {
         this.plugin = plugin;
@@ -32,9 +34,11 @@ public final class PlayerCommandRespectGuard implements Listener {
         this.enabled = config.getBoolean(CONFIG_PATH + ".enabled", true);
         this.blockedMessage = config.getString(CONFIG_PATH + ".blocked-message", "That player is not online.");
         this.rules = loadRules(config.getStringList(CONFIG_PATH + ".patterns"));
+        this.scanAllCommands = config.getBoolean(CONFIG_PATH + ".scan-all-commands.enabled", true);
+        this.hiddenNameScanner = new HiddenNameCommandScanner(config.getStringList(CONFIG_PATH + ".scan-all-commands.ignored-command-roots"));
 
         this.diagnostics.result("respect-command-guard", "load command guard",
-                "enabled=" + this.enabled + " rules=" + this.rules.size());
+                "enabled=" + this.enabled + " rules=" + this.rules.size() + " scanAllCommands=" + this.scanAllCommands);
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -55,6 +59,17 @@ public final class PlayerCommandRespectGuard implements Listener {
             this.diagnostics.result("respect-command-guard", "blocked player-targeting command",
                     "sender=" + event.getPlayer().getName() + " target=" + targetName + " pattern=" + rule.rawPattern());
             return;
+        }
+
+        if (this.scanAllCommands) {
+            String targetName = this.hiddenNameScanner.firstHiddenName(command,
+                    name -> this.vanishService.shouldHideNameFrom(event.getPlayer(), name)).orElse(null);
+            if (targetName != null) {
+                event.setCancelled(true);
+                event.getPlayer().sendMessage(Component.text(this.blockedMessage, NamedTextColor.RED));
+                this.diagnostics.result("respect-command-guard", "blocked command containing hidden name",
+                        "sender=" + event.getPlayer().getName() + " target=" + targetName);
+            }
         }
     }
 

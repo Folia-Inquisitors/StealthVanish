@@ -8,6 +8,15 @@ respect:
     # when the target is vanished and the sender lacks stealthvanish.see.
     enabled: true
     blocked-message: "That player is not online."
+    scan-all-commands:
+      # After known command patterns are checked, scan every other command for
+      # exact vanished-name tokens. This catches custom plugin commands without
+      # needing a dedicated pattern for each plugin.
+      enabled: true
+      ignored-command-roots:
+        - "stealth"
+        - "vanish"
+        - "v"
     patterns:
       # Private-message style commands.
       - "^/(?:msg|tell|w|whisper|pm|emsg|etell|ew|essentials:msg|essentials:tell|essentials:w|minecraft:msg|minecraft:tell|minecraft:w|bukkit:msg|bukkit:tell|bukkit:w)\\s+(?<target>[A-Za-z0-9_]{3,16})(?:\\s|$)"
