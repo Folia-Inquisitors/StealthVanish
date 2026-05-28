@@ -16,7 +16,7 @@ This is a vanishing plugin that lets people go vanish. This plugin is free and o
 
 - Regex to hide usernames from apparing / username leak protection support preventing hidden staff from being shown on other plugins
 
-- Similar API calls to other vanishing plugin ensuring compatability without plugins needing to add support.
+- Similar API calls to other vanishing plugins ensuring compatability without plugins needing to add support.
 
 - More modernized version with lots of notes to make code understanable
 
