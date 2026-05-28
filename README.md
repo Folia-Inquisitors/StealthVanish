@@ -2,15 +2,15 @@
 
 https://discord.gg/aT9z7q7hX8
 
-# Building instructions
+## Building instructions
 
 mvn clean install
  
-# Description
+## Description
 
 This is a vanishing plugin that lets people go vanish. This plugin is free and open source, feel free to contribute. 
 
-# features / selling points
+## features / selling points
 
 - Designed to be version stable for future updates.
 
@@ -22,7 +22,7 @@ This is a vanishing plugin that lets people go vanish. This plugin is free and o
 
 - Designed from the ground up to support folia
 
-# Disclaimer
+## Disclaimer
 
 Ai was used when helping make this plugin during testing and commits.
 
