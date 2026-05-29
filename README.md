@@ -8,7 +8,7 @@ mvn clean install
  
 ## Description
 
-This is a vanishing plugin that lets people go vanish. This plugin is free and open source, feel free to contribute. 
+This is a vanishing plugin that lets staff stay hidden. This plugin is free and open source, feel free to contribute. 
 
 ## features / selling points
 
@@ -21,6 +21,46 @@ This is a vanishing plugin that lets people go vanish. This plugin is free and o
 - More modernized version with lots of notes to make code understanable
 
 - Designed from the ground up to support folia
+
+## Commands 
+```
+/stealth
+/stealth toggle
+/stealth on
+/stealth off
+/stealth status
+/stealth capabilities
+/stealth <on|off|toggle|status> <player>
+```
+
+Permission Nodes
+
+```
+stealthvanish.command
+Allows using /stealth for yourself. Default: op.
+
+stealthvanish.command.others
+Allows using /stealth ... <player> to check or change someone else’s vanish state. Default: op.
+
+stealthvanish.see
+Admin/bypass permission. Lets someone see vanished players, see real join/quit state, see vanished players in tab-complete/player-name surfaces, and bypass the respect command guard. Default: op.
+```
+
+## API
+```
+Other plugins can use:
+
+VanishAPI.isInvisible(player);
+VanishAPI.isInvisible(uuid);
+VanishAPI.isInvisible(playerName);
+
+VanishAPI.hidePlayer(player);
+VanishAPI.showPlayer(player);
+
+VanishAPI.canSee(viewer, target);
+VanishAPI.shouldHideFrom(viewer, target);
+VanishAPI.shouldHideNameFrom(viewer, playerName);
+```
 
 ## Disclaimer
 
