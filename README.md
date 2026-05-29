@@ -33,7 +33,7 @@ This is a vanishing plugin that lets staff stay hidden. This plugin is free and 
 /stealth <on|off|toggle|status> <player>
 ```
 
-Permission Nodes
+## Permission Nodes
 
 ```
 stealthvanish.command
