@@ -62,10 +62,6 @@ VanishAPI.shouldHideFrom(viewer, target);
 VanishAPI.shouldHideNameFrom(viewer, playerName);
 ```
 
-## Disclaimer
-
-Ai was used when helping make this plugin during testing and commits.
-
 # Folia inquisitors
 
 [<img src="https://github.com/Folia-Inquisitors.png" width=80 alt="Folia-Inquisitors">](https://github.com/orgs/Folia-Inquisitors/repositories)
